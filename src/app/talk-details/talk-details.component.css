@@ -1,0 +1,33 @@
+.details {
+    padding: 20px;
+    background: #F8F8F8;
+}
+
+
+
+.details .tools{
+    margin-top: 20px;
+}
+
+.details .author{
+    margin-bottom: 20px;
+}
+
+.author{
+    color: #888;
+}
+
+.tools {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.tools > div{
+    margin-right: 5px;
+    min-width: 80px;
+    text-align: center;
+}
+
+.your-rating{
+    width: 40px;
+}

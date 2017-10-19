@@ -1,0 +1,17 @@
+.talks{
+    padding: 20px 0;
+}
+
+.talk-item{
+    border-top: 1px solid #F8F8F8;
+    padding: 5px 10px;
+}
+
+.rating{
+    text-align: center;
+}
+.rating__label{
+    color: #999;
+}
+.rating__value{
+}

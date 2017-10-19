@@ -1,0 +1,12 @@
+<div class="talks">
+    <div class="talk-item row" *ngFor="let talk of talks" >
+        <div class="rating">
+            <div class="rating__label">Rating</div>
+            <div class="rating__value">{{talk.rating}}</div>
+        </div>
+        <div class="col">
+            <div><a [routerLink]="['/talks',talk.id]">{{talk.title}}</a></div>
+            <div>{{talk.speaker}}</div>
+        </div>
+    </div>
+</div>
