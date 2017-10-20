@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Talk} from "../model";
 import {BackendService} from "../backend.service";
 
@@ -9,10 +9,9 @@ import {BackendService} from "../backend.service";
 })
 export class TalksComponent implements OnInit {
 
-    talks: Talk[] = [];
+    @Input() talks: Talk[] = [];
 
-    constructor(private backend: BackendService) {
-        backend.refetch().then(_ => this.talks = backend.talks);
+    constructor() {
     }
 
     ngOnInit() {

@@ -20,6 +20,7 @@ export class BackendService {
     }
 
     public get talks(): Talk[] {
+        console.log(this._list.map(id => this._talks[id]));
         return this._list.map(id => this._talks[id]);
     }
 
@@ -42,7 +43,9 @@ export class BackendService {
                 const t = result.json()['talk'];
                 if (t) {
                     this._talks[t.id] = t;
-                    this._list.push(t.id);
+                    if (this._list.indexOf(t.id) === -1) {
+                        this._list.push(t.id);
+                    }
                     return t;
                 }
                 return null;
@@ -71,11 +74,11 @@ export class BackendService {
             params.set(key, this.filters[key]);
         }
 
-
         return this.http.get(`${this.url}/talks`, {search: params}).forEach((r) => {
             const data = r.json();
             this._talks = data.talks;
             this._list = data.list;
+            console.log(this._list);
         });
     }
 }

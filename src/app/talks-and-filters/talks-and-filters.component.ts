@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Filters} from "../model";
+import {Filters, Talk} from "../model";
 import {BackendService} from "../backend.service";
 
 @Component({
@@ -9,7 +9,8 @@ import {BackendService} from "../backend.service";
 })
 export class TalksAndFiltersComponent implements OnInit {
 
-    constructor(private backend: BackendService) {
+    constructor(public backend: BackendService) {
+        backend.refetch();
     }
 
     ngOnInit() {
