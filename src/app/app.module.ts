@@ -13,6 +13,7 @@ import {HttpModule} from '@angular/http';
 import {BackendService} from './backend.service';
 import {RouteRoutingModule} from './route/route-routing.module';
 import {WatchService} from './watch.service';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import {WatchService} from './watch.service';
     imports: [
         BrowserModule,
         RouteRoutingModule,
-        HttpModule
+        HttpModule,
+        ReactiveFormsModule
     ],
     providers: [BackendService, WatchService],
     bootstrap: [AppComponent]

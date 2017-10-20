@@ -1,15 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {FormGroup, FormControl} from "@angular/forms";
+import "rxjs/add/operator/debounceTime";
 
 @Component({
-  selector: 'app-filters',
-  templateUrl: './filters.component.html',
-  styleUrls: ['./filters.component.css']
+    selector: 'app-filters',
+    templateUrl: './filters.component.html',
+    styleUrls: ['./filters.component.css']
 })
 export class FiltersComponent implements OnInit {
 
-  constructor() { }
+    filtersForm = new FormGroup({
+        'title': new FormControl(),
+        'speaker': new FormControl(),
+        'minRating': new FormControl(0)
+    });
+    // filters: Filters;
 
-  ngOnInit() {
-  }
+    @Output() filtersChange = new EventEmitter();
+
+    @Input()
+    set filters(v) {
+        this.filtersForm.setValue(v);
+    }
+
+    constructor() {
+        this.filtersForm.valueChanges.debounceTime(200).subscribe(_ => {
+            console.log(_);
+            this.filtersChange.next(_);
+        });
+    }
+
+    ngOnInit() {
+    }
 
 }
