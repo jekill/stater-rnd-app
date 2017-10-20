@@ -28,6 +28,14 @@
     text-align: center;
 }
 
+.rating{
+    text-align: center;
+}
+
+.rating__value{
+    font-size: 2rem;
+}
+
 .your-rating{
     width: 40px;
 }

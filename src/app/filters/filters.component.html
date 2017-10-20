@@ -1,13 +1,20 @@
 <h3>Filters</h3>
-<form class="form-inline">
-    <div class="form-group ">
-        <input class="form-control" type="search">
-    </div>
+<form class="form">
 
-    <div class="form-group ">
-        <input class="form-control mx-sm-2" type="text" size="2" placeholder="0" maxlength="2">
+    <div class="form-row">
+        <div class="form-group col">
+            <input class="form-control form-control-sm" type="text" placeholder="theme">
     </div>
-
-    <button class="btn btn-primary mx-sm-2">Apply</button>
+        <div class="form-group col">
+            <input class="form-control form-control-sm" type="text" placeholder="speaker">
+    </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-2">
+            <label for="filterRating" class="col-form-label col-form-label-sm">Rating</label>
+            <input id="filterRating" class="form-control form-control-sm" type="text" size="2" placeholder="0"
+                   maxlength="2">
+        </div>
+    </div>
 
 </form>

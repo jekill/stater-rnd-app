@@ -2,27 +2,40 @@
     loading...
 </div>
 <div class="details" *ngIf="talk">
-    <h2>{{talk.title}}</h2>
-    <div class="author">{{talk.speaker}}</div>
-
-    <div class="description">
-        {{talk.description}}
-    </div>
-
-    <div class="tools">
-        <div class="rating">{{talk.rating}}</div>
-
-        <div class="rate form-inline">
-            <input class="your-rating form-control" type="text" #yourRating [value]="talk.yourRating" size="1">
-            <button class="btn mx-sm-2" (click)="handleRate(talk.id, yourRating.value)">Rate</button>
-        </div>
-
-        <div class="watch">
-            <div *ngIf="isWatched()">
-                <i class="fa fa-eye"></i>
+    <div class="row">
+        <div class="col-2 rating-col">
+            <div class="rating">
+                <div class="rating__label">Rating</div>
+                <div class="rating__value">{{talk.rating}}</div>
             </div>
-            <button class="btn" (click)="handleWatch()" *ngIf="!isWatched()">Watch</button>
+        </div>
+
+        <div class="col">
+
+            <h2>{{talk.title}}</h2>
+            <div class="author">{{talk.speaker}}</div>
+
+            <div class="description">
+                {{talk.description}}
+            </div>
+
+            <div class="tools">
+
+                <div class="rate form-inline">
+                    <input class="your-rating form-control" type="text" #yourRating [value]="talk.yourRating" size="1">
+                    <button class="btn mx-sm-2" (click)="handleRate(talk.id, yourRating.value)">Rate</button>
+                </div>
+
+                <div class="watch">
+                    <div *ngIf="isWatched()">
+                        <i class="fa fa-eye"></i>
+                    </div>
+                    <button class="btn" (click)="handleWatch()" *ngIf="!isWatched()">Watch</button>
+                </div>
+
+            </div>
         </div>
 
     </div>
+
 </div>
