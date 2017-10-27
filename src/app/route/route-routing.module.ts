@@ -5,6 +5,11 @@ import {TalkDetailsComponent} from '../talk-details/talk-details.component';
 
 const routes: Routes = [
     {
+        path: '',
+        redirectTo: 'talks',
+        pathMatch: 'full'
+    },
+    {
         path: 'talks',
         component: TalksAndFiltersComponent
     },
@@ -15,7 +20,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, {useHash: true})],
     exports: [RouterModule]
 })
 export class RouteRoutingModule {

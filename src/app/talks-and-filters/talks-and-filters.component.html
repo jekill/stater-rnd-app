@@ -1,2 +1,2 @@
-<app-filters [filters]="" (filtersChange)="handleFiltersChange($event)" ></app-filters>
+<app-filters [filters]="backend.filters" (filtersChange)="handleFiltersChange($event)" ></app-filters>
 <app-talks [talks]="backend.talks" ></app-talks>

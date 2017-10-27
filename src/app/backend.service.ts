@@ -4,6 +4,7 @@ import {Filters, Talk} from './model';
 import {of} from 'rxjs/observable/of';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import "rxjs/add/operator/catch";
 
 @Injectable()
 export class BackendService {
@@ -54,11 +55,19 @@ export class BackendService {
 
     rateTalk(id: number, rating: number): void {
         const talk = this._talks[id];
+        const oldRating = talk.yourRating;
+
+
         if (talk) {
             talk.yourRating = rating;
         }
 
-        this.http.post(`${this.url}/rate`, {id, yourRating: rating}).forEach(_ => console.log(_));
+        this.http.post(`${this.url}/rate`, {id, yourRating: rating})
+            .catch((e) => {
+                talk.yourRating = oldRating;
+                throw e;
+            })
+            .forEach(_ => console.log(_));
     }
 
     changeFilters(newFilters): void {

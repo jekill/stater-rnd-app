@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Filters, Talk} from "../model";
-import {BackendService} from "../backend.service";
+import {Filters, Talk} from '../model';
+import {BackendService} from '../backend.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     selector: 'app-talks-and-filters',
@@ -9,8 +10,11 @@ import {BackendService} from "../backend.service";
 })
 export class TalksAndFiltersComponent implements OnInit {
 
-    constructor(public backend: BackendService) {
-        backend.refetch();
+    constructor(public backend: BackendService, private  router: Router, private  activeRoute: ActivatedRoute) {
+        this.activeRoute.queryParams.subscribe((p) => {
+            console.log("ROUCHNG", p);
+            backend.changeFilters(p);
+        });
     }
 
     ngOnInit() {
@@ -18,6 +22,11 @@ export class TalksAndFiltersComponent implements OnInit {
 
     handleFiltersChange(filters: Filters) {
         this.backend.changeFilters(filters);
+        this.router.navigate(['/talks'], {queryParams: filters} );
+    }
+
+    paramsToFilter(params) {
+        return params;
     }
 
 }

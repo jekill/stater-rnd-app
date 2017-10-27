@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormGroup, FormControl} from "@angular/forms";
 import "rxjs/add/operator/debounceTime";
+import {Filters} from "../model";
 
 @Component({
     selector: 'app-filters',
@@ -11,7 +12,7 @@ export class FiltersComponent implements OnInit {
 
     filtersForm = new FormGroup({
         'title': new FormControl(),
-        'speaker': new FormControl(),
+        'speaker': new FormControl('', null),
         'minRating': new FormControl(0)
     });
     // filters: Filters;
@@ -19,7 +20,8 @@ export class FiltersComponent implements OnInit {
     @Output() filtersChange = new EventEmitter();
 
     @Input()
-    set filters(v) {
+    set filters(v: Filters) {
+        v = Object.assign({title: '', minRating: 0, speaker: ''}, v) as Filters;
         this.filtersForm.setValue(v);
     }
 

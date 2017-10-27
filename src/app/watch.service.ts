@@ -11,7 +11,7 @@ export class WatchService {
         this.watched[talk.id] = true;
     }
 
-    isWatched(talk: Talk) {
-        return !!this.watched[talk.id];
+    isWatched(talk: Talk): boolean {
+        return Boolean(this.watched[talk.id]);
     }
 }

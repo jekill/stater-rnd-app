@@ -50,8 +50,8 @@ router.get("/talks", (req, res) => {
     const filters = req.query;
     console.log("GET /talks", "filters:", filters);
     const filteredTalks = _talks.filter(t => {
-        const titlePass = filters.title ? t.title.indexOf(filters.title) > -1 : true;
-        const speakerPass = filters.speaker ? t.speaker.indexOf(filters.speaker) > -1 : true;
+        const titlePass = filters.title ? t.title.toLowerCase().indexOf(filters.title.toLowerCase()) > -1 : true;
+        const speakerPass = filters.speaker ? t.speaker.toLowerCase().indexOf(filters.speaker.toLowerCase()) > -1 : true;
         const ratingPass = filters.minRating ? t.rating >= filters.minRating : true;
         return titlePass && speakerPass && ratingPass;
     });
