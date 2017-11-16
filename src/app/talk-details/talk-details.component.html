@@ -1,6 +1,8 @@
 <div class="details" *ngIf="!talk">
     loading...
 </div>
+<div><a [routerLink]="['/talks']" class="btn btn-success btn-sm"><i class="fa fa-chevron-left"></i> back</a></div><br/>
+
 <div class="details" *ngIf="talk">
     <div class="row">
         <div class="col-2 rating-col">

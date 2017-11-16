@@ -14,6 +14,7 @@ import {BackendService} from './backend.service';
 import {RouteRoutingModule} from './route/route-routing.module';
 import {WatchService} from './watch.service';
 import {ReactiveFormsModule} from "@angular/forms";
+import { TwoColumnLayoutComponent } from './two-column-layout/two-column-layout.component';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import {ReactiveFormsModule} from "@angular/forms";
         TalksComponent,
         TalkComponent,
         RateButtonComponent,
-        WatchButtonComponent
+        WatchButtonComponent,
+        TwoColumnLayoutComponent
     ],
     imports: [
         BrowserModule,

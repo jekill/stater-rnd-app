@@ -5,7 +5,10 @@
             <div class="rating__value">{{talk.rating}}</div>
         </div>
         <div class="col">
-            <div><a [routerLink]="['/talks', talk.id]" >{{talk.title}}</a></div>
+            <div>
+                <a [routerLink]="['/talks/details',{outlets:{right:[talk.id],left:['left']}}]">{{talk.title}}</a>
+            </div>
+
             <div>{{talk.speaker}}</div>
         </div>
     </div>

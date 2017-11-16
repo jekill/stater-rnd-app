@@ -13,7 +13,7 @@ export class TalksAndFiltersComponent implements OnInit {
     constructor(public backend: BackendService, private  router: Router, private  activeRoute: ActivatedRoute) {
         this.activeRoute.queryParams.subscribe((p) => {
             console.log("ROUCHNG", p);
-            backend.changeFilters(p);
+            // backend.changeFilters(p);
         });
     }
 
@@ -22,11 +22,9 @@ export class TalksAndFiltersComponent implements OnInit {
 
     handleFiltersChange(filters: Filters) {
         this.backend.changeFilters(filters);
-        this.router.navigate(['/talks'], {queryParams: filters} );
+        console.log("______",this.activeRoute.snapshot.toString());
+        // this.router.navigateByUrl(this.activeRoute.snapshot.toString(), {queryParams: filters} );
     }
 
-    paramsToFilter(params) {
-        return params;
-    }
 
 }

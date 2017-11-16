@@ -16,8 +16,8 @@ export class BackendService {
     _list: number[] = [];
 
     constructor(private http: Http) {
-        let w: any = window;
-        w.__http = this.http;
+        // let w: any = window;
+        // w.__http = this.http;
     }
 
     public get talks(): Talk[] {

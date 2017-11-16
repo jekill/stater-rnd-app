@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Talk} from "../model";
 import {BackendService} from "../backend.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
     selector: 'app-talks',
@@ -11,7 +12,8 @@ export class TalksComponent implements OnInit {
 
     @Input() talks: Talk[] = [];
 
-    constructor() {
+    constructor(protected router: Router, public activeRoute: ActivatedRoute) {
+        // console.log('+++++qweqweqweqwqw', activeRoute.queryParams.map());
     }
 
     ngOnInit() {

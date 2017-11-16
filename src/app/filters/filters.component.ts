@@ -1,7 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormGroup, FormControl} from "@angular/forms";
-import "rxjs/add/operator/debounceTime";
-import {Filters} from "../model";
+import {FormGroup, FormControl} from '@angular/forms';
+import 'rxjs/add/operator/debounceTime';
+import {Filters} from '../model';
+import * as _ from 'underscore';
 
 @Component({
     selector: 'app-filters',
@@ -22,7 +23,14 @@ export class FiltersComponent implements OnInit {
     @Input()
     set filters(v: Filters) {
         v = Object.assign({title: '', minRating: 0, speaker: ''}, v) as Filters;
-        this.filtersForm.setValue(v);
+        // this.filtersForm.setValue(v);
+        const formVals = this.filtersForm.getRawValue();
+        console.log("RAW VALS", formVals);
+
+        if (!_.isEqual(formVals, v)) {
+            this.filtersForm.setValue(v);
+        }
+        // this.filtersForm.set;
     }
 
     constructor() {

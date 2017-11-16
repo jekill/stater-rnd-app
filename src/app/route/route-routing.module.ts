@@ -2,6 +2,8 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {TalksAndFiltersComponent} from '../talks-and-filters/talks-and-filters.component';
 import {TalkDetailsComponent} from '../talk-details/talk-details.component';
+import {TwoColumnLayoutComponent} from '../two-column-layout/two-column-layout.component';
+import {TalksComponent} from '../talks/talks.component';
 
 const routes: Routes = [
     {
@@ -11,12 +13,25 @@ const routes: Routes = [
     },
     {
         path: 'talks',
-        component: TalksAndFiltersComponent
+        component: TalksAndFiltersComponent,
     },
     {
-        path: 'talks/:id',
-        component: TalkDetailsComponent
+        path: 'talks/details',
+        component: TwoColumnLayoutComponent,
+        children: [
+            {
+                path: ':id',
+                component: TalkDetailsComponent,
+                outlet: 'right'
+            },
+            {
+                path: 'left',
+                component: TalksAndFiltersComponent,
+                outlet: 'left'
+            }
+        ]
     }
+
 ];
 
 @NgModule({
